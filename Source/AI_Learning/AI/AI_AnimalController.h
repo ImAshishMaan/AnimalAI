@@ -2,13 +2,13 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
-#include "AIC_DeerStag.generated.h"
+#include "AI_AnimalController.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class AI_LEARNING_API AAIC_DeerStag : public AAIController {
+class AI_LEARNING_API AAI_AnimalController : public AAIController {
 	GENERATED_BODY()
 
 protected:

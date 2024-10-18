@@ -1,6 +1,6 @@
 #include "BTTask_FindFood.h"
 #include "AIController.h"
-#include "AI_Character.h"
+#include "AI_AnimalCharacter.h"
 #include "BehaviorTree/BehaviorTreeComponent.h"
 #include "BehaviorTree/BehaviorTreeTypes.h"
 #include "Kismet/GameplayStatics.h"
@@ -11,7 +11,7 @@ EBTNodeResult::Type UBTTask_FindFood::ExecuteTask(UBehaviorTreeComponent& OwnerC
 	AAIController* AIController = OwnerComp.GetAIOwner();
 	if(AIController) {
 		APawn* Pawn = Cast<APawn>(AIController->GetPawn());
-		AAI_Character* AICharacter = Cast<AAI_Character>(Pawn);
+		AAI_AnimalCharacter* AICharacter = Cast<AAI_AnimalCharacter>(Pawn);
 		if(Pawn) {
 			TArray<AActor*> AllActors;
 			UGameplayStatics::GetAllActorsOfClass(AIController, AICharacter->GetFoodActor(), AllActors);

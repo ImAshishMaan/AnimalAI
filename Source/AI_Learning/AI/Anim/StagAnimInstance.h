@@ -4,7 +4,7 @@
 #include "Animation/AnimInstance.h"
 #include "StagAnimInstance.generated.h"
 
-class AAI_Character;
+class AAI_AnimalCharacter;
 
 UCLASS()
 class AI_LEARNING_API UStagAnimInstance : public UAnimInstance {
@@ -15,7 +15,7 @@ public:
 	virtual void NativeUpdateAnimation(float DeltaTime) override;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Data")
-	AAI_Character* Owner;
+	AAI_AnimalCharacter* Owner;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Data")
 	float Speed;

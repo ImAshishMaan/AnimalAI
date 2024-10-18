@@ -1,18 +1,19 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "AIEnums.h"
 #include "GameFramework/Character.h"
-#include "AI_Character.generated.h"
+#include "AI_AnimalCharacter.generated.h"
 
 class USkeletalMeshComponent;
 class AActor;
 
 UCLASS()
-class AI_LEARNING_API AAI_Character : public ACharacter {
+class AI_LEARNING_API AAI_AnimalCharacter : public ACharacter {
 	GENERATED_BODY()
 
 public:
-	AAI_Character();
+	AAI_AnimalCharacter();
 	virtual void Tick(float DeltaTime) override;
 
 protected:
@@ -40,6 +41,16 @@ private:
 
 	UPROPERTY()
 	bool IsEating = false;
+
+	UPROPERTY()
+	AIState CurrentState = AIState::FreeMovement;
+
+	UFUNCTION()
+	void UpdateState(AIState NewState, bool what);
+	void SetupHungryState(bool Hungry);
+	void SetupEatingState(bool Eating);
+	void SetupDeadState();
+	void SetupFreeMovementState();
 
 public:
 	FTimerHandle HungryTimerHandle;

@@ -1,10 +1,10 @@
-#include "AIC_DeerStag.h"
+#include "AI_AnimalController.h"
 
-#include "AI_Character.h"
+#include "AI_AnimalCharacter.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "Navigation/PathFollowingComponent.h"
 
-void AAIC_DeerStag::BeginPlay() {
+void AAI_AnimalController::BeginPlay() {
 	Super::BeginPlay();
 
 	if(BehaviourTree) {
@@ -12,11 +12,11 @@ void AAIC_DeerStag::BeginPlay() {
 	}
 }
 
-void AAIC_DeerStag::OnMoveCompleted(FAIRequestID RequestID, const FPathFollowingResult& Result) {
+void AAI_AnimalController::OnMoveCompleted(FAIRequestID RequestID, const FPathFollowingResult& Result) {
 	Super::OnMoveCompleted(RequestID, Result);
 
 	if(Result.IsSuccess()) {
-		AAI_Character* AIChar = Cast<AAI_Character>(GetPawn());
+		AAI_AnimalCharacter* AIChar = Cast<AAI_AnimalCharacter>(GetPawn());
 		if(AIChar && AIChar->GetIsHungry() && AIChar->GetIsEating() == false) {
 			AIChar->StartEatingTimer();
 		}
@@ -27,6 +27,6 @@ void AAIC_DeerStag::OnMoveCompleted(FAIRequestID RequestID, const FPathFollowing
 	}
 }
 
-void AAIC_DeerStag::UpdateHunger(bool IsHungry) {
+void AAI_AnimalController::UpdateHunger(bool IsHungry) {
 	GetBlackboardComponent()->SetValueAsBool("IsHungry", IsHungry);
 }
